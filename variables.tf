@@ -19,7 +19,7 @@ variable "owner" {
 
 variable "teams_config" {
   description = <<EOF
-  Map of team's configuration values
+  MS Teams configuration data
   EOF
   type = object({
     login     = string
