@@ -1,0 +1,22 @@
+{
+    "runAfter": {
+        "${INIT_VAR_ACTION}": ["Succeeded"]
+    },
+    "type": "ApiConnection",
+    "inputs": {
+        "body": {
+            "messageBody": "<p><span style=\"font-size: 16px\"><u><strong>Azure Monitor Alert</strong></u></span><u><strong><br>\n<br>\n</strong></u><span style=\"font-size: 14px\"><strong>General:<br>\n</strong></span><span style=\"font-size: 12px\"><strong>- Alert Rule Name: </strong></span><span style=\"font-size: 12px\">@{triggerBody()?['data']?['essentials']?['alertRule']}</span><span style=\"font-size: 12px\"></span><u><strong><br>\n</strong></u><strong>- Link to </strong><strong>resource: </strong><strong>@{variables('alertLink')}</strong><strong><br>\n</strong><strong>- Severity:</strong> @{triggerBody()?['data']?['essentials']?['severity']}<u><strong><br>\n<br>\n</strong></u><span style=\"font-size: 14px\"><strong>Details:</strong></span><span style=\"font-size: 12px\"><strong><br>\n- AlertId:</strong></span><span style=\"font-size: 12px\"> </span><span style=\"font-size: 12px\">@{triggerBody()?['data']?['essentials']?['alertId']}</span><span style=\"font-size: 12px\"><br>\n</span><span style=\"font-size: 12px\"><strong>- Type: </strong></span><span style=\"font-size: 12px\"></span><span style=\"font-size: 12px\">@{triggerBody()?['data']?['essentials']?['signalType']}</span><span style=\"font-size: 12px\"><br>\n</span><span style=\"font-size: 12px\"><strong>- Description: </strong></span><span style=\"font-size: 12px\"></span><span style=\"font-size: 12px\">@{triggerBody()?['data']?['essentials']?['description']}</span><span style=\"font-size: 12px\"><br>\n</span><span style=\"font-size: 12px\"><strong>- Alert Date:</strong></span><span style=\"font-size: 12px\"> </span><span style=\"font-size: 12px\">@{triggerBody()?['data']?['essentials']?['firedDateTime']}</span><span style=\"font-size: 12px\"></span></p>",
+            "recipient": {
+                "channelId": "${TEAMS_channelId}",
+                "groupId": "${TEAMS_groupId}"
+            }
+        },
+        "host": {
+            "connection": {
+                "name": "@parameters('$connections')['teams']['connectionId']"
+            }
+        },
+        "method": "post",
+        "path": "/beta/teams/conversation/message/poster/Flow bot/location/@{encodeURIComponent('Channel')}"
+    }
+}

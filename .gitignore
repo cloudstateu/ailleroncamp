@@ -1,0 +1,32 @@
+*~
+/.direnv
+/.envrc.private
+/.private
+exitcode.*
+plan*.out
+*.txt
+!requirements.txt
+.DS_Store
+
+# local .terraform directories
+.terraform*/
+.terraform/
+
+# This is causing troubles..
+.terraform.lock.hcl
+
+# .tfvars files
+*.tfvars
+
+# .tfstate files
+*.tfstate
+*.tfstate.*
+
+# ignore override files
+override.tf
+override.tf.json
+*_override.tf
+*_override.tf.json
+
+# Ignore .idea files
+.idea/
