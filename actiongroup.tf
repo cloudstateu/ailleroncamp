@@ -1,11 +1,5 @@
-resource "azurerm_resource_group" "rg" {
-  name     = "rg-${var.env}"
-  location = var.location
-  tags     = local.tags
-}
-
-resource "azurerm_monitor_action_group" "action_groups" {
-  name                = "actiongroup-${var.env}"
+resource "azurerm_monitor_action_group" "action_group" {
+  name                = "${var.env}-actiongroup"
   resource_group_name = azurerm_resource_group.rg.name
   short_name          = "ag-cs"
   enabled             = true

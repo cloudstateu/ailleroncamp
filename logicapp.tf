@@ -1,5 +1,5 @@
 resource "azurerm_resource_group_template_deployment" "logic_app_teams_api_connection" {
-  name                = "logicapp-teams-api-conn-${var.env}"
+  name                = "${var.env}-logicapp-teams-api-conn"
   resource_group_name = azurerm_resource_group.rg.name
   template_content    = file("${abspath(path.module)}/schemas/logic-app-teams-api-connection.json")
 
@@ -25,7 +25,7 @@ resource "azurerm_resource_group_template_deployment" "logic_app_teams_api_conne
 }
 
 resource "azurerm_logic_app_workflow" "logicapp" {
-  name                = "logicapp-${var.env}"
+  name                = "${var.env}-logicapp"
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   tags                = local.tags
@@ -55,7 +55,7 @@ resource "azurerm_logic_app_workflow" "logicapp" {
 }
 
 resource "azurerm_logic_app_trigger_http_request" "logic_app_http_trigger" {
-  name         = "logicapp-http-trigger-${var.env}"
+  name         = "logicapp-http-trigger"
   logic_app_id = azurerm_logic_app_workflow.logicapp.id
 
   schema = file("${abspath(path.module)}/schemas/http-trigger-schema.json")

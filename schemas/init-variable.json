@@ -6,7 +6,7 @@
             {
                 "name": "alertLink",
                 "type": "string",
-                "value": "@{concat('<a href=','\"https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AlertDetailsTemplateBlade/alertId',triggerBody()?['data']?['essentials']?['alertId'],'\">Open in Azure Monitor</a>')}"
+                "value": "@{concat('<a href=','\"https://portal.azure.com/#blade/Microsoft_Azure_Monitoring/AlertDetailsTemplateBlade/alertId/',replace(triggerBody()?['data']?['essentials']?['alertId'], '/', '%2F'),'\">Open in Azure Monitor</a>')}"
             }
         ]
     }

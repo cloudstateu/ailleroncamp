@@ -1,10 +1,10 @@
 variable "subscription_id" {
-  type    = string
+  type = string
 }
 
 variable "env" {
   type    = string
-  default = "cloudsummit"
+  default = "cs-alerts"
 }
 
 variable "location" {
@@ -15,6 +15,11 @@ variable "location" {
 variable "owner" {
   type    = string
   default = "JR"
+}
+
+variable "law-env" {
+  type    = string
+  default = "cs-monitoring"
 }
 
 variable "teams_config" {
