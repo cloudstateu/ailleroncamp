@@ -28,6 +28,10 @@ resource "azurerm_monitor_diagnostic_setting" "monitor-diagnostic-settings" {
     category = "Alert"
     enabled  = true
   }
+  log {
+    category = "Administrative"
+    enabled  = true
+  }
 
   lifecycle {
     ignore_changes = [log]

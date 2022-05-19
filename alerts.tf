@@ -113,7 +113,8 @@ resource "azurerm_monitor_scheduled_query_rules_alert" "nsg_flow_log_alert" {
     | extend NSG_id=strcat("/subscriptions/", sub, "/resourceGroups/", RG, "providers/Microsoft.Network/networkSecurityGroups/", NSGName)
     | where DestPort_d == "22"
         and FASchemaVersion_s == "2"
-        and NSGRuleAction == "A"      
+        and NSGRuleAction == "A"
+        and TimeGenerated > ago(15m)      
     | project
         TimeGenerated,
         Direction = case(FlowDirection_s == "I", "Inbound", "Outbound"),
@@ -124,8 +125,8 @@ resource "azurerm_monitor_scheduled_query_rules_alert" "nsg_flow_log_alert" {
     QUERY
 
   severity    = 2
-  frequency   = 15
-  time_window = 15
+  frequency   = 5
+  time_window = 5
   trigger {
     operator  = "GreaterThan"
     threshold = 0
