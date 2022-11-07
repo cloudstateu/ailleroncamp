@@ -1,7 +1,7 @@
 resource "azurerm_monitor_action_group" "action_group" {
   name                = "${var.env}-actiongroup"
   resource_group_name = azurerm_resource_group.rg.name
-  short_name          = "ag-cs"
+  short_name          = "ag-ac"
   enabled             = true
   tags                = local.tags
 

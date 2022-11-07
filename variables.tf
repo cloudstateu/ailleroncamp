@@ -4,7 +4,7 @@ variable "subscription_id" {
 
 variable "env" {
   type    = string
-  default = "cs-alerts"
+  default = "ac-alerts"
 }
 
 variable "location" {
@@ -19,7 +19,7 @@ variable "owner" {
 
 variable "law-env" {
   type    = string
-  default = "cs-monitoring"
+  default = "ailleroncamp"
 }
 
 variable "teams_config" {

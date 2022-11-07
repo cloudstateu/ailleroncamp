@@ -4,7 +4,7 @@ variable "subscription_id" {
 
 variable "env" {
   type    = string
-  default = "cs-monitoring"
+  default = "ailleroncamp"
 }
 
 variable "location" {

@@ -105,7 +105,7 @@ data "azurerm_network_watcher" "network-watcher" {
 }
 
 resource "azurerm_storage_account" "saflowlogs" {
-  name                = "csmonitoringsaflowlogs"
+  name                = "${var.env}saflowlogs"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
 
